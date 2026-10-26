@@ -50,7 +50,7 @@ export default function Checkout() {
   const [otp, setOtp] = useState('');
   const [reference, setReference] = useState(null);
   const [appId] = useState(
-    /*process.env.REACT_APP_PAYSTACK_APP_ID || */ 'tenant_app_kibet'
+    /*process.env.REACT_APP_PAYSTACK_APP_ID || */ 'tenant_app_kibet2'
   );
 
   const [form, setForm] = useState({
