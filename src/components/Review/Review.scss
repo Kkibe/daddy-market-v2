@@ -1,0 +1,71 @@
+.review {
+	max-width: 1200px;
+	margin: 0 auto;
+
+	.section-header {
+		text-align: center;
+		margin-bottom: 2rem;
+		h1 { padding: 0.5rem 0; }
+	}
+
+	.review-slider {
+		.wrapper {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+			gap: 1.5rem;
+		}
+
+		.slide {
+			background: var(--white);
+			padding: 2rem;
+			box-shadow: var(--box-shadow);
+			border: 1px solid var(--border);
+			border-radius: var(--radius);
+			position: relative;
+			transition: all var(--transition);
+
+			&:hover { box-shadow: var(--box-shadow-lg); transform: translateY(-3px); }
+
+			.quote-icon {
+				position: absolute;
+				top: 1.5rem;
+				right: 1.5rem;
+				font-size: 2.5rem;
+				color: var(--green-light);
+			}
+
+			.user {
+				display: flex;
+				gap: 1rem;
+				align-items: center;
+				padding-bottom: 1rem;
+
+				.user-info {
+					h3 {
+						color: var(--black);
+						font-size: 1.7rem;
+						font-weight: 600;
+						padding-bottom: 0.3rem;
+					}
+
+					.rating {
+						display: flex;
+						align-items: center;
+						gap: 0.4rem;
+						font-size: 1.3rem;
+						color: var(--light-color);
+						padding: 0;
+						.star { color: #f8c441; }
+					}
+				}
+			}
+
+			.comment {
+				font-size: 1.4rem;
+				color: var(--light-color);
+				line-height: 1.6;
+				padding: 0;
+			}
+		}
+	}
+}

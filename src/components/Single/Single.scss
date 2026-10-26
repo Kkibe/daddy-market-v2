@@ -1,0 +1,150 @@
+.single {
+	position: fixed;
+	top: -110%;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 999;
+	background: rgba(0, 0, 0, 0.8);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
+	transition: top 0.4s ease;
+
+	&.active { top: 0; }
+
+	.wrapper {
+		background: var(--white);
+		width: 100%;
+		max-width: 900px;
+		max-height: 90vh;
+		overflow-y: auto;
+		border-radius: 16px;
+		padding: 2rem;
+		display: flex;
+		align-items: center;
+		gap: 2rem;
+		box-shadow: var(--box-shadow-lg);
+
+		.image {
+			flex: 1;
+			min-width: 250px;
+			max-width: 400px;
+
+			img {
+				width: 100%;
+				border-radius: 12px;
+				object-fit: cover;
+				max-height: 350px;
+			}
+		}
+
+		.details {
+			flex: 1.2;
+			min-width: 280px;
+			display: flex;
+			flex-direction: column;
+			gap: 1.2rem;
+
+			h1 {
+				text-align: left;
+				font-size: 2.2rem;
+				padding: 0;
+				color: var(--black);
+			}
+
+			.pricing {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+
+				.badge, h3 {
+					padding: 0.8rem 1.5rem;
+					font-size: 1.6rem;
+					border-radius: 30px;
+					display: flex;
+					align-items: center;
+					gap: 0.5rem;
+				}
+
+				h3 {
+					background: var(--green-light);
+					color: var(--green);
+					font-weight: 700;
+				}
+
+				.badge {
+					background: var(--light-grey);
+					color: var(--black);
+				}
+			}
+
+			.stars {
+				display: flex;
+				gap: 0.3rem;
+				.star { color: #f8c441; font-size: 1.6rem; }
+			}
+
+			.actions {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+				flex-wrap: wrap;
+
+				.btn {
+					padding: 1rem 2rem;
+					font-size: 1.4rem;
+					&.primary { background: var(--green); }
+				}
+
+				.quantity-control {
+					display: flex;
+					align-items: center;
+					gap: 0.5rem;
+					background: var(--light-grey);
+					border-radius: 30px;
+					padding: 0.3rem;
+
+					h3 {
+						min-width: 3rem;
+						text-align: center;
+						font-size: 1.6rem;
+						padding: 0;
+						background: none;
+						color: var(--black);
+					}
+
+					a {
+						width: 3.5rem;
+						height: 3.5rem;
+						border-radius: 50%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						background: var(--white);
+						color: var(--black);
+						cursor: pointer;
+						&:hover { background: var(--green); color: var(--white); }
+					}
+				}
+			}
+		}
+	}
+
+	#close {
+		position: absolute;
+		top: 2rem;
+		right: 2rem;
+		background: var(--white);
+		color: var(--black);
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.single .wrapper {
+		flex-direction: column;
+		.image { max-width: 100%; }
+	}
+}

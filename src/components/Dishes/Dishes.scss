@@ -1,0 +1,174 @@
+.dishes {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.5rem;
+
+    // The motion.div wrapper is the actual grid item,
+    // so card-wrapper must fill it.
+    > div {
+      display: flex;
+    }
+
+    .card-wrapper {
+      position: relative;
+      width: 100%;
+
+      .dish {
+        position: relative;
+        width: 100%;
+        padding: 1.5rem;
+        text-align: center;
+        overflow: visible;
+
+        // ---------- Floating action icons ----------
+        .icon {
+          position: absolute;
+          top: 1rem;
+          z-index: 5;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 3.5rem;
+          height: 3.5rem;
+          border: none;
+          border-radius: 50%;
+          background: var(--white);
+          color: var(--black);
+          font-size: 1.5rem;
+          box-shadow: var(--box-shadow);
+          cursor: pointer;
+          opacity: 0;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background: var(--green);
+            color: var(--white);
+          }
+
+          &.share {
+            left: 1rem;
+            transform: translateX(-10px);
+          }
+
+          &.eye {
+            right: 1rem;
+            transform: translateX(10px);
+          }
+        }
+
+        &:hover {
+          .icon.share,
+          .icon.eye {
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        // ---------- Card content ----------
+        .content {
+          position: relative;
+          padding: 1.2rem;
+
+          // ProductImage may render a wrapper around the <img>,
+          // so target both the direct child and any nested img.
+          > img,
+          > *:first-child,
+          img {
+            display: block;
+            width: 100%;
+            height: 16rem;
+            object-fit: cover;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            transition: transform 0.4s ease;
+          }
+
+          h3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin: 0.5rem 0;
+            color: var(--black);
+            font-size: 1.7rem;
+            font-weight: 600;
+            line-height: 1.4;
+          }
+
+          .dish-meta {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.3rem 0;
+
+            .dish-rating {
+              display: flex;
+              align-items: center;
+              gap: 0.3rem;
+              font-size: 1.3rem;
+              color: var(--light-color);
+            }
+
+            .dish-price {
+              padding: 0.3rem 0.8rem;
+              border-radius: 20px;
+              background: var(--green-light);
+              color: purple;
+              font-size: 1.6rem;
+              font-weight: 700;
+            }
+          }
+
+          p {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            padding-right: 4rem;
+            color: var(--light-color);
+            font-size: 1.3rem;
+            line-height: 1.5;
+          }
+
+          // Full-width flow button (matches the text label in JSX)
+          .add-to-cart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            width: 100%;
+            margin-top: 0.8rem;
+            padding: 0.8rem 1rem;
+            border: 1.5px solid var(--border);
+            border-radius: var(--radius-sm);
+            background: var(--white);
+            color: var(--black);
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all var(--transition);
+
+            &:hover {
+              background: var(--green);
+              color: var(--white);
+              border-color: var(--green);
+            }
+
+            &.in-cart {
+              background: var(--green-light);
+              color: var(--green);
+              border-color: var(--green);
+
+              &:hover {
+                background: #e74c3c;
+                color: var(--white);
+                border-color: #e74c3c;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

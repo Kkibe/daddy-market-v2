@@ -1,0 +1,162 @@
+header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    padding: 1rem 2%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 999;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 1px 0 var(--border);
+    transition: all 0.3s ease;
+
+    &.scrolled {
+        padding: 0.6rem 2%;
+        box-shadow: var(--box-shadow);
+    }
+
+    .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        overflow: hidden;
+        flex-shrink: 0;
+        transition: transform 0.3s;
+
+        &:hover { transform: scale(1.05); }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-position: center;
+            object-fit: cover;
+        }
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+
+        a, button {
+            font-size: 1.5rem;
+            border-radius: var(--radius-sm);
+            padding: 0.7rem 1.3rem;
+            color: var(--light-color);
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 500;
+            transition: all var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+
+            &:hover, &.active {
+                color: var(--green);
+                background: var(--green-light);
+            }
+        }
+
+        .nav-cta {
+            background: var(--green);
+            color: var(--white);
+            font-weight: 600;
+            margin-left: 0.5rem;
+            &:hover { background: var(--green-dark); color: var(--white); transform: translateY(-1px); }
+        }
+    }
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    .icon {
+        cursor: pointer;
+        height: 4rem;
+        width: 4rem;
+        text-align: center;
+        font-size: 1.6rem;
+        color: var(--black);
+        border-radius: 50%;
+        background: var(--light-grey);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: all var(--transition);
+
+        .badge-count {
+            min-width: 2rem;
+            height: 2rem;
+            padding: 0 0.4rem;
+            position: absolute;
+            right: -0.3rem;
+            top: -0.3rem;
+            background: var(--green);
+            color: var(--white);
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border: 2px solid var(--white);
+        }
+
+        &:hover {
+            color: var(--white);
+            background: var(--green);
+            transform: translateY(-2px);
+        }
+    }
+
+    #menu-bars { display: none; }
+}
+
+@media screen and (max-width: 991px) {
+    header { padding: 1rem 1.5rem; }
+}
+
+@media screen and (max-width: 768px) {
+    header {
+        nav {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-top: 1px solid var(--border);
+            flex-direction: column;
+            align-items: stretch;
+            padding: 1rem;
+            gap: 0.5rem;
+            box-shadow: var(--box-shadow-lg);
+            clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+            transition: clip-path 0.3s ease;
+
+            &.active {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+            }
+
+            a, button {
+                width: 100%;
+                padding: 1.2rem 1.5rem;
+                font-size: 1.6rem;
+                justify-content: flex-start;
+                &:hover, &.active { background: var(--light-grey); }
+            }
+
+            .nav-cta { margin: 0.5rem 0; justify-content: center; }
+        }
+
+        .icons #menu-bars { display: flex; }
+    }
+}
